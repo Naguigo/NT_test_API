@@ -23,17 +23,27 @@ jobs:
       - name: Build and test with Maven
         run: mvn clean test
 
-      - name: Generate Allure report
-        run: mvn allure:report
-
       - name: Upload Allure results
         uses: actions/upload-artifact@v4
         with:
           name: allure-results
           path: target/allure-results
 
-      - name: Upload Allure report
+      # Opcional: gerar e fazer upload do relatório HTML usando Allure CLI
+      - name: Install Allure CLI
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y default-jre
+          curl -o allure-2.24.0.tgz -L https://github.com/allure-framework/allure2/releases/download/2.24.0/allure-2.24.0.tgz
+          tar -xzf allure-2.24.0.tgz
+          sudo mv allure-2.24.0/bin/allure /usr/local/bin/allure
+
+      - name: Generate Allure HTML report
+        run: |
+          allure generate target/allure-results -o target/allure-report --clean
+
+      - name: Upload Allure HTML report
         uses: actions/upload-artifact@v4
         with:
           name: allure-report
-          path: target/site/allure-maven-plugin
+          path: target/allure-report
