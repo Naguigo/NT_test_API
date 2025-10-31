@@ -1,0 +1,4 @@
+tests/RandomImageTests.class
+tests/BreedListTests.class
+tests/BreedImagesTests.class
+utils/BaseTest.class
