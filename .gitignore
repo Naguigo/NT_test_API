@@ -3,3 +3,5 @@
 /.vscode
 *.iml
 *.log
+/.allure
+/site
