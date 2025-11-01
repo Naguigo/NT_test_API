@@ -29,10 +29,8 @@ jobs:
           name: allure-results
           path: target/allure-results
 
-      - name: Install Allure CLI
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y allure
+      - name: Install Allure CLI via npm
+        run: npm install -g allure-commandline --save-dev
 
       - name: Generate Allure HTML report
         run: |
