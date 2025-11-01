@@ -20,25 +20,14 @@ mvn clean test
 mvn allure:serve
 ```
 
-## Como executar no GitHub Actions (CI)
+## Como visualizar o relatório no GitHub Actions (CI)
 O workflow já está configurado para:
 - Executar os testes com Maven
 - Gerar e fazer upload dos resultados do Allure (`target/allure-results`)
-- (Opcional) Gerar o relatório HTML do Allure usando o Allure CLI
+- Gerar o relatório HTML do Allure (`target/site/allure-maven-plugin`)
+- Publicar automaticamente o relatório Allure no GitHub Pages
 
-Para baixar e visualizar o relatório HTML localmente:
-1. Baixe o artefato `allure-results` ou `allure-report` do job do GitHub Actions.
-2. Se baixou apenas o `allure-results`, gere o relatório localmente:
-   ```bash
-   allure generate <pasta-do-allure-results> -o <pasta-do-relatorio>
-   allure open <pasta-do-relatorio>
-   ```
+### Acessando o relatório Allure publicado
+Após um push ou pull request na branch `main`, o relatório Allure será publicado automaticamente no GitHub Pages do repositório.
 
-## O que está incluído
-- Testes usando RestAssured + JUnit5
-- Configuração do Allure no pom.xml para geração de relatórios
-- Testes cobrindo casos de sucesso e um caso negativo para raça inexistente
-
-## Observações
-- Os testes são determinísticos, mas dependem da Dog API externa.
-- Se estiver atrás de um proxy corporativo, configure as variáveis de proxy do Maven/Java.
+**Acesse o relatório em:**  https://naguigo.github.io/NT_test_API/
