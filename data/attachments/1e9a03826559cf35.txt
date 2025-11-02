@@ -1,0 +1,4 @@
+{
+    "message": "https://images.dog.ceo/breeds/terrier-wheaten/n02098105_562.jpg",
+    "status": "success"
+}
